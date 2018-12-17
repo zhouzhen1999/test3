@@ -99,3 +99,29 @@ section {
     margin-top: .5rem;
     margin-left: .45rem;
 }
+
+@keyframes move {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(3rem);
+    }
+}
+
+@keyframes right {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(-3rem);
+    }
+}
+
+#left {
+    animation: move 3s linear alternate infinite
+}
+
+#right {
+    animation: right 3s linear alternate infinite
+}
