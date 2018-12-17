@@ -6,10 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/location.css">
 </head>
 
 <body>
-    sdsd
+    <div class="wrap">
+        <header id="header">
+            <span class="active">今天<p>12-12</p></span>
+
+        </header>
+        <section id="section-list">
+
+
+        </section>
+    </div>
 </body>
+<script src="../js/libs/jquery.js">
+</script>
+<script>
+    $.ajax({
+        url: "../json/data.json",
+        dataType: "json",
+        success: function(res) {
+
+            var str = "";
+            res.forEach((i) => {
+                render(i.content, "明天")
+                str += `
+                <span>${i.title}<p>12-14</p></span>
+                `;
+                $("#header").append(str);
+
+
+            })
+        }
+    })
+
+    function render(data, title) {
+        var strs = "";
+        data.forEach((i) => {
+            strs += ` <li>
+                <b>
+                    <h2>${i.time}</h2>
+                    <p${i.address}</p>
+                </b>
+                <b>
+                    <h3>16:00</h3>
+                    <p>北京南</p>
+                </b>
+                <b>
+                    <h3>16:00</h3>
+                    <p>北京南</p>
+                </b>
+                <b>
+                    <h3>16:00</h3>
+                    <p>北京南</p>
+                </b>
+            </li>`;
+
+            $("#section-list").html(strs)
+        })
+    }
+
+
+
+    $("#header").on("click", "span", function() {
+        $("#section-list").html("");
+        $("#section-list").append(` <li>
+                <b>
+                    <h2>43:76</h2>
+                    <p>湖南</p>
+                </b>
+                <b>
+                    <h3>16:00</h3>
+                    <p>北京南</p>
+                </b>
+                <b>
+                    <h3>16:00</h3>
+                    <p>北京南</p>
+                </b>
+                <b>
+                    <h3>16:00</h3>
+                    <p>北京南</p>
+                </b>
+            </li>`)
+        $(this).addClass("active").siblings().removeClass("active")
+    })
+</script>
 
 </html>
